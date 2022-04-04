@@ -1,5 +1,5 @@
 <?php
-echo 'date('H,t,s');
+echo 'date('H:t:s');
 
 
 
