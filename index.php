@@ -1,3 +1,3 @@
 <?php
-echo 'parduotuves vakaras';
+echo 'parduotuves sandeliS';
 ?>
