@@ -1,3 +1,4 @@
 <?php
-echo 'parduotuves vakaras';
-?>
+echo 'labas vakaras';
+echo 'testas';
+
