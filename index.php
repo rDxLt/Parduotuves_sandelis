@@ -1,4 +1,4 @@
 <?php
-echo 'labas vakaras';
-echo 'testas';
+echo date('H:i:s');
+echo 'labas rytas';
 
