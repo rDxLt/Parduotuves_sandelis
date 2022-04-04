@@ -1,3 +1,8 @@
 <?php
-echo 'parduotuves sandeliS';
+echo date('H:t:s');
+
+
+
+
+
 ?>
