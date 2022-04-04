@@ -1,3 +1,8 @@
 <?php
-echo 'parduotuves sandeliukas';
+echo 'date('H,t,s');
+
+
+
+
+
 ?>
