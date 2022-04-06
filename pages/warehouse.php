@@ -9,7 +9,36 @@ if (isset($_POST['name'])) {
 
     $sql = mysqli_query($database, 'insert into produktai (id, kategorija, pavadinimas, kaina, galiojimo_dienos) value ("' . $id . '","' . $category . '","' . $name . '","' . $price . '","' . $useBy_date . '")');
 }
+
+
 ?>
+
+<h2>
+    Prekių sąrašas sandėlyje:
+</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Pavadinimas</th>
+        <th>Kaina €</th>
+    </tr>
+    <?php
+    $result = mysqli_query($database, 'select * from produktai');
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    foreach ($products as $product) { ?>
+        <tr>
+            <td>
+                <?php echo $product['id'] ?>
+            </td>
+            <td>
+                <?php echo $product['pavadinimas'] ?>
+            </td>
+            <td>
+                <?php echo $product['kaina'] ?>
+            </td>
+        </tr>
+    <?php } ?>
+</table>
 
 <h1>Sandėlys</h1>
 <h3>Produkto pridėjimo forma</h3>
@@ -59,3 +88,4 @@ if (isset($_POST['name'])) {
     </table>
     <br/>
     <button type="submit">Pridėti</button>
+
