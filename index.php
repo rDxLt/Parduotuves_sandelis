@@ -35,10 +35,10 @@ include_once 'config.php';
         <?php } ?>
         <?php if (isLoged() === true) { ?>
             <td>
-                <a href="index.php?page=#">Parduotuvės</a>
+                <a href="index.php?page=shops">Parduotuvės</a>
             </td>
             <td>
-                <a href="index.php?page=#">Sandėlys</a>
+                <a href="index.php?page=warehouse">Sandėlys</a>
             </td>
             <td>
                 <a href="index.php?page=logout">Atsijungti</a>
@@ -57,6 +57,10 @@ if ($page === null) {
     include 'pages/login.php';
 } elseif ($page === 'logout') {
     include 'pages/logout.php';
+} elseif ($page === 'shops') {
+    include 'pages/shops.php';
+} elseif ($page === 'warehouse') {
+    include 'pages/warehouse.php';
 }
 ?>
 
