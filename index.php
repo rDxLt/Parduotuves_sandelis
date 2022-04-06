@@ -43,8 +43,8 @@ include_once 'config.php';
             $warehouse_person = mysqli_query($database, 'select pareigybe from darbuotojai where pareigybe = "' . 'sandelio_darbuotojas' . '"');
             $warehouse_person = mysqli_fetch_array($warehouse_person, MYSQLI_ASSOC);
 
-            var_dump($checkPareigybe);
-            var_dump($_SESSION['email']);
+//            var_dump($checkPareigybe);
+//            var_dump($_SESSION['email']);
 //            var_dump($warehouse_person);
 
             if (isLoged() === true) { ?>
