@@ -1,1 +1,1 @@
-<?php
+<h1>Parduotuvės</h1>
