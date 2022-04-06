@@ -35,6 +35,9 @@ include_once 'config.php';
         <?php } ?>
         <?php if (isLoged() === true) { ?>
             <td>
+                <a href="index.php?page=#">Parduotuvės</a>
+            </td>
+            <td>
                 <a href="index.php?page=#">Sandėlys</a>
             </td>
             <td>
