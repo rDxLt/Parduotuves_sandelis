@@ -51,7 +51,7 @@ if (isset($_POST['email'])) {
 }
 $_SESSION['code'] = rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9);
 ?>
-<h1>Register</h1>
+<h1>Registracija</h1>
 <form action="index.php?page=register" method="post">
     <table>
         <tr>
