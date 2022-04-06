@@ -38,6 +38,9 @@ include_once 'config.php';
                 <a href="index.php?page=shops">Parduotuvės</a>
             </td>
             <td>
+                <a href="index.php?page=products">Produktai</a>
+            </td>
+            <td>
                 <a href="index.php?page=warehouse">Sandėlys</a>
             </td>
             <td>
@@ -61,6 +64,8 @@ if ($page === null) {
     include 'pages/shops.php';
 } elseif ($page === 'warehouse') {
     include 'pages/warehouse.php';
+} elseif ($page === 'products') {
+    include 'pages/products.php';
 }
 ?>
 
