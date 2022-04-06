@@ -2,11 +2,10 @@
 
 if (isset($_POST['email'])) {
     $email = $_POST['email'];
-    $sex = $_POST['sex'];
     $password = $_POST['password'];
     $password2 = $_POST['password2'];
     $name = $_POST['name'];
-    $age = $_POST['age'];
+    $pareigybe = $_POST['pareigybe'];
     $code = $_POST['code'];
     $errors = [];
 
@@ -19,9 +18,7 @@ if (isset($_POST['email'])) {
     if (!preg_match('/[A-Za-z]/', $password) || !preg_match('/[0-9]/', $password)) {
         $errors['password'][] = 'slaptazodyje turi buti raide ir skaicius';
     }
-    if (!in_array($sex, ['male', 'female'])) {
-        $errors['sex'][] = 'bloga lytis';
-    }
+
     if (strlen($name) < 3 || strlen($name) > 60) {
         $errors['name'][] = 'vardas yra per ilgas arba per trumpas';
     }
@@ -31,11 +28,8 @@ if (isset($_POST['email'])) {
     if ($password != $password2) {
         $errors['password2'][] = 'Slaprazodiai nesutampa';
     }
-    if ($age < 14 || $age > 60) {
-        $errors['age'][] = 'blogas amzius';
-    }
 
-    $checkEmail = mysqli_query($database, 'select * from users where email = "' . $email . '"');
+    $checkEmail = mysqli_query($database, 'select * from darbuotojai where pastas = "' . $email . '"');
     $checkEmail = mysqli_fetch_row($checkEmail);
     if ($checkEmail != null) {
         $errors['email'][] = 'Pastas uzimtas';
@@ -46,7 +40,8 @@ if (isset($_POST['email'])) {
     }
 
     if (empty($errors)) {
-        $user = mysqli_query($database, 'insert into users (name, age, sex, password, email) value ("' . $name . '", ' . $age . ', "' . $sex . '", "' . $password . '", "' . $email . '")');
+        $user = mysqli_query($database, 'insert into darbuotojai (vardas, pareigybe, slaptazodis, pastas) value ("' .
+            $name . '", "' . $pareigybe . '", "' . $password . '", "' . $email . '")');
         if ($user != false) {
             header('Location: index.php?page=login&email=' . $email);
         } else {
@@ -76,68 +71,12 @@ $_SESSION['code'] = rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 
         </tr>
         <tr>
             <td>
-                Lytis:
+                Pareigybe:
             </td>
             <td>
-                <select name="sex">
-                    <option value="">-</option>
-                    <option value="male"
-                        <?php
-                        if (($sex ?? null) == 'male') {
-                            echo 'selected';
-                        }
-                        ?>
-                    >
-                        Male
-                    </option>
-                    <option value="female"
-                        <?php
-                        if (($sex ?? null) == 'female') {
-                            echo 'selected';
-                        }
-                        ?>
-                    >
-                        Female
-                    </option>
-                    Female
-                    </option>
-                </select>
+                <input type="text" name="pareigybe">
             </td>
-            <td>
-                <?php
-                if (isset($errors['sex'])) {
-                    echo implode(',', $errors['sex']);
-                }
-                ?>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Metai:
-            </td>
-            <td>
-                <select name="age">
-                    <option value="">-</option>
-                    <?php for ($i = 14; $i <= 60; $i++) { ?>
-                        <option value="<?php echo $i; ?>"
-                            <?php
-                            if (($age ?? null) == $i) {
-                                echo 'selected';
-                            }
-                            ?>
-                        >
-                            <?php echo $i ?>
-                        </option>
-                    <?php } ?>
-                </select>
-            </td>
-            <td>
-                <?php
-                if (isset($errors['age'])) {
-                    echo implode(',', $errors['age']);
-                }
-                ?>
-            </td>
+
         </tr>
         <tr>
             <td>
