@@ -74,9 +74,11 @@ $_SESSION['code'] = rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 
                 Pareigybe:
             </td>
             <td>
-                <input type="text" name="pareigybe">
+                <select name="pareigybe">
+                    <option value="sandelio_darbuotojas">sandelio_darbuotojas</option>
+                    <option value="parduotuves_darbuotojas">parduotuves_darbuotojas</option>
+                </select>
             </td>
-
         </tr>
         <tr>
             <td>
