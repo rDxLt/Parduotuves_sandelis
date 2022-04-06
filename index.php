@@ -33,24 +33,43 @@ include_once 'config.php';
                 <a href="index.php?page=register">Registruotis</a>
             </td>
         <?php } ?>
-        <?php if (isLoged() === true) { ?>
-            <td>
-                <a href="index.php?page=shops">Parduotuvės</a>
-            </td>
-            <td>
-                <a href="index.php?page=products">Produktai</a>
-            </td>
-            <td>
-                <a href="index.php?page=warehouse">Sandėlys</a>
-            </td>
-            <td>
-                <a href="index.php?page=logout">Atsijungti</a>
-            </td>
+
+        <?php
+        if (isset($_SESSION['email'])) {
+
+            $checkPareigybe = mysqli_query($database, 'select pareigybe from darbuotojai where pastas = "' . $_SESSION['email'] . '"');
+            $checkPareigybe = mysqli_fetch_array($checkPareigybe, MYSQLI_ASSOC);
+
+            $warehouse_person = mysqli_query($database, 'select pareigybe from darbuotojai where pareigybe = "' . 'sandelio_darbuotojas' . '"');
+            $warehouse_person = mysqli_fetch_array($warehouse_person, MYSQLI_ASSOC);
+
+            var_dump($checkPareigybe);
+            var_dump($_SESSION['email']);
+//            var_dump($warehouse_person);
+
+            if (isLoged() === true) { ?>
+                <td>
+                    <a href="index.php?page=shops">Parduotuvės</a>
+                </td>
+                <?php if ($warehouse_person === $checkPareigybe) { ?>
+                    <td>
+                        <a href="index.php?page=warehouse">Sandėlys</a>
+                    </td>
+                <?php } else { ?>
+                    <td>
+                        <a href="index.php?page=products">Produktai</a>
+                    </td>
+                <?php } ?>
+                <td>
+                    <a href="index.php?page=logout">Atsijungti</a>
+                </td>
+            <?php } ?>
         <?php } ?>
     </tr>
 </table>
 
 <?php
+
 /** @var TYPE_NAME $page */
 if ($page === null) {
     include 'pages/home.php';
