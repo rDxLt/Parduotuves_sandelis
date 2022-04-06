@@ -22,7 +22,7 @@ if (isset($_POST['email'])) {
     }
 }
 ?>
-<h1>Login</h1>
+<h1>Prisijungimas</h1>
 <form action="index.php?page=login" method="post">
     <table>
         <tr>
