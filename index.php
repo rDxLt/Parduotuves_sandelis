@@ -45,6 +45,7 @@ include_once 'config.php';
 </table>
 
 <?php
+/** @var TYPE_NAME $page */
 if ($page === null) {
     include 'pages/home.php';
 } elseif ($page === 'register') {
