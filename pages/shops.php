@@ -5,7 +5,7 @@
             Pasirinkite parduotuvę:
         </td>
         <td>
-            <select type="number" name="category_id" value=""><br/>
+            <select name="parduotuves" value=""><br/>
                 <?php
                 $result = mysqli_query($database, 'select * from parduotuves');
                 $parduotuves = mysqli_fetch_all($result, MYSQLI_ASSOC);
