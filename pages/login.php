@@ -8,8 +8,8 @@ if (isset($_POST['email'])) {
         $errors[] = 'Yra tusciu lauku';
     }
 
-    /** @var TYPE_NAME $database */
-    $checkUser = mysqli_query($database, 'select * from users where email = "' . $email . '" and password = "' . $password . '"');
+    $checkUser = mysqli_query($database, 'select * from darbuotojai where pastas = "' . $email . '" and slaptazodis = "' .
+        $password . '"');
     $checkUser = mysqli_fetch_row($checkUser);
 
     if ($checkUser == null) {
