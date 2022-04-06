@@ -27,13 +27,16 @@ include_once 'config.php';
         </td>
         <?php if (isLoged() === false) { ?>
             <td>
-                <a href="index.php?page=login">Login</a>
+                <a href="index.php?page=login">Prisijungimas</a>
             </td>
             <td>
-                <a href="index.php?page=register">Register</a>
+                <a href="index.php?page=register">Registruotis</a>
             </td>
         <?php } ?>
         <?php if (isLoged() === true) { ?>
+            <td>
+                <a href="index.php?page=#">Sandėlys</a>
+            </td>
             <td>
                 <a href="index.php?page=logout">Atsijungti</a>
             </td>
