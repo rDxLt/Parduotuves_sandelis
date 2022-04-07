@@ -21,6 +21,7 @@ if (isset($_POST['name'])) {
         <th>ID</th>
         <th>Pavadinimas</th>
         <th>Kaina €</th>
+        <th>Galiojimo dienos</th>
     </tr>
     <?php
     $result = mysqli_query($database, 'select * from produktai');
@@ -35,6 +36,9 @@ if (isset($_POST['name'])) {
             </td>
             <td>
                 <?php echo $product['kaina'] ?>
+            </td>
+            <td>
+                <?php echo $product['galiojimo_dienos'] ?>
             </td>
         </tr>
     <?php } ?>
