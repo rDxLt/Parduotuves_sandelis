@@ -25,6 +25,9 @@ include_once 'config.php';
         <td>
             <a href="index.php">Home</a>
         </td>
+        <td>
+            <a href="index.php?page=products">Produktai</a>
+        </td>
         <?php if (isLoged() === false) { ?>
             <td>
                 <a href="index.php?page=login">Prisijungimas</a>
