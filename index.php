@@ -37,21 +37,24 @@ include_once 'config.php';
         <?php
         if (isset($_SESSION['email'])) {
 
-            $checkPareigybe = mysqli_query($database, 'select pareigybe from darbuotojai where pastas = "' . $_SESSION['email'] . '"');
-            $checkPareigybe = mysqli_fetch_array($checkPareigybe, MYSQLI_ASSOC);
+            function getEmployeesData($email, $data)
+            {
+                $database = mysqli_connect('127.0.0.1', 'root', '', 'parduotuve_sandelis');
+                $get_user = mysqli_query($database, "SELECT * FROM darbuotojai WHERE pastas = '$email'");
+                $get_user = mysqli_fetch_object($get_user);
+                return $get_user->$data;
+            }
 
-            $warehouse_person = mysqli_query($database, 'select pareigybe from darbuotojai where pareigybe = "' . 'sandelio_darbuotojas' . '"');
-            $warehouse_person = mysqli_fetch_array($warehouse_person, MYSQLI_ASSOC);
-
-//            var_dump($checkPareigybe);
-//            var_dump($_SESSION['email']);
-//            var_dump($warehouse_person);
+            $email = $_SESSION['email'];
+            $get_role = getEmployeesData($email, 'pareigybe');
+            var_dump($get_role);
 
             if (isLoged() === true) { ?>
                 <td>
                     <a href="index.php?page=shops">Parduotuvės</a>
                 </td>
-                <?php if ($warehouse_person === $checkPareigybe) { ?>
+                <!--                --><?php //if ($warehouse_person === $checkPareigybe) { ?>
+                <?php if ($get_role == 'sandelio_darbuotojas') { ?>
                     <td>
                         <a href="index.php?page=warehouse">Sandėlys</a>
                     </td>
