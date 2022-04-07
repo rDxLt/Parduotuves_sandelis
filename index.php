@@ -25,9 +25,6 @@ include_once 'config.php';
         <td>
             <a href="index.php">Home</a>
         </td>
-        <td>
-            <a href="index.php?page=products">Produktai</a>
-        </td>
         <?php if (isLoged() === false) { ?>
             <td>
                 <a href="index.php?page=login">Prisijungimas</a>
@@ -57,7 +54,7 @@ include_once 'config.php';
                     <a href="index.php?page=shops">Parduotuvės</a>
                 </td>
                 <!--                --><?php //if ($warehouse_person === $checkPareigybe) { ?>
-                <?php if ($get_role == 'sandelio_darbuotojas') { ?>
+                <?php if ($get_role === 'sandelio_darbuotojas') { ?>
                     <td>
                         <a href="index.php?page=warehouse">Sandėlys</a>
                     </td>
