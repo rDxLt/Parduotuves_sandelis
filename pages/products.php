@@ -1,13 +1,14 @@
 <?php
 
 if (isset($_POST['name'])) {
-    $id = $_POST['id'];
+//    $id = $_POST['id'];
     $category = $_POST['category'];
     $name = $_POST['name'];
     $price = $_POST['price'];
     $useBy_date = $_POST['useBy_date'];
 
-    $sql = mysqli_query($database, 'insert into produktai (id, kategorija, pavadinimas, kaina, galiojimo_dienos) value ("' . $id . '","' . $category . '","' . $name . '","' . $price . '","' . $useBy_date . '")');
+    $sql = mysqli_query($database, 'insert into produktai ( kategorija, pavadinimas, kaina, galiojimo_dienos) value ("' . $category . '","' . $name . '","' . $price . '","' . $useBy_date . '")');
+//    $result = mysqli_query($database, $sql);
 }
 
 
@@ -16,7 +17,7 @@ if (isset($_POST['name'])) {
 <h2>
     Produktų sąrašas:
 </h2>
-<table>
+<table border=1px>
     <tr>
         <th>ID</th>
         <th>Kategorija</th>
@@ -32,17 +33,17 @@ if (isset($_POST['name'])) {
             <td>
                 <?php echo $product['id'] ?>
             </td>
-            <td>
+            <td align="center">
                 <?php echo $product['kategorija'] ?>
             </td>
-            <td>
+            <td align="center">
                 <?php echo $product['pavadinimas'] ?>
             </td>
-            <td>
+            <td align="center">
                 <?php echo $product['kaina'] ?>
             </td>
-            <td>
-                <?php echo $product['galiojimo_dienos'] ?>
+            <td align="center">
+                <?php echo "<b>" . $product['galiojimo_dienos'] . "<b>" ?>
             </td>
         </tr>
     <?php } ?>
@@ -50,15 +51,15 @@ if (isset($_POST['name'])) {
 
 <h3>Produkto pridėjimo forma</h3>
 <form action="#" method="post">
-    <table>
-        <tr>
-            <td>
-                Prekės ID:
-            </td>
-            <td>
-                <input type="number" name="id" value="">
-            </td>
-        </tr>
+    <table border=1px>
+        <!--        <tr>-->
+        <!--            <td>-->
+        <!--                Prekės ID:-->
+        <!--            </td>-->
+        <!--            <td>-->
+        <!--                <input type="number" name="id" value="">-->
+        <!--            </td>-->
+        <!--        </tr>-->
         <tr>
             <td>
                 Kategorija:
@@ -93,6 +94,6 @@ if (isset($_POST['name'])) {
         </tr>
         <!--        <br/>-->
     </table>
-    <!--    <br/>-->
+    <br/>
     <button type="submit">Pridėti</button>
 
