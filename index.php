@@ -50,17 +50,17 @@ include_once 'config.php';
             var_dump($get_role);
 
             if (isLoged() === true) { ?>
-                <td>
-                    <a href="index.php?page=shops">Parduotuvės</a>
-                </td>
                 <!--                --><?php //if ($warehouse_person === $checkPareigybe) { ?>
                 <?php if ($get_role === 'sandelio_darbuotojas') { ?>
+                    <td>
+                        <a href="index.php?page=products">Produktai</a>
+                    </td>
                     <td>
                         <a href="index.php?page=warehouse">Sandėlys</a>
                     </td>
                 <?php } else { ?>
                     <td>
-                        <a href="index.php?page=products">Produktai</a>
+                        <a href="index.php?page=shops">Parduotuvės</a>
                     </td>
                 <?php } ?>
                 <td>
