@@ -49,9 +49,15 @@ include_once 'config.php';
             $get_role = getEmployeesData($email, 'pareigybe');
             var_dump($get_role);
 
-            if (isLoged() === true) { ?>
-                <!--                --><?php //if ($warehouse_person === $checkPareigybe) { ?>
-                <?php if ($get_role === 'sandelio_darbuotojas') { ?>
+            if (isLoged() === true) {
+                if ($get_role === 'admin') { ?>
+                    <td>
+                        <a href="index.php?page=products">Produktai</a>
+                    </td>
+                    <td>
+                        <a href="index.php?page=warehouse">Sandėlys</a>
+                    </td>
+                <?php } elseif ($get_role === 'sandelio_darbuotojas') { ?>
                     <td>
                         <a href="index.php?page=products">Produktai</a>
                     </td>
