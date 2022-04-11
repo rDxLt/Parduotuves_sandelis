@@ -1,4 +1,5 @@
 <?php
+$action = $_GET['action'] ?? null;
 
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
@@ -44,12 +45,15 @@ if (isset($_POST['id'])) {
     <br/>
     <button type="submit">Pridėti</button>
     <br/>
-    <br/>
-    <br/>
-    <br/>
-    <h2>
-        Produktų sąrašas sandėlyje:
-    </h2>
+</form>
+<br/>
+<br/>
+<br/>
+<h2>
+    Produktų sąrašas sandėlyje:
+</h2>
+<form action="index.php?page=warehouse&action=id" method="post" name="id">
+    <!--   isemiau is action --><?php //echo $id ?>
     <table border=1px>
         <tr>
             <!--            <th>ID</th>-->
@@ -62,27 +66,28 @@ if (isset($_POST['id'])) {
         $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
         foreach ($products
 
-        as $product) { ?>
+        as $product) {
+        ?>
         <tr>
-            <!--            <td>-->
-            <!--                --><?php //echo $product['id']; ?>
-            <!--            </td>-->
             <td align="center">
                 <?php echo $product['pavadinimas'] ?>
             </td>
             <td>
-                <!--                --><?php
-                //                $sandelioPrekes = mysqli_query($database, 'select * from sandelio_produktai');
-                //                $sandelioPrekes = mysqli_fetch_all($sandelioPrekes, MYSQLI_ASSOC);
-                //                foreach ($sandelioPrekes as $sandelioPreke) {
-                //                    echo $sandelioPreke['likutis'] ?>
-                <!--                --><?php //} ?>
+                <?php
+                $id = mysqli_query($database, 'select likutis from sandelio_produktai');
+                $amount = mysqli_fetch_all($id, MYSQLI_ASSOC);
+                foreach ($amount as $amounts) {
+//                    echo $amounts['likutis'];
+                    print_r($amounts);
+                } ?>
             </td>
             <td>
                 <a href="delete.php?=id">Delete</a>
             </td>
-
             <?php } ?>
         </tr>
     </table>
+    <br/>
+    <button type="submit">Atnaujinti likučius</button>
+</form>
 
