@@ -26,7 +26,7 @@ if (isset($_POST['name'])) {
         <th>Galiojimo dienos</th>
     </tr>
     <?php
-    $result = mysqli_query($database, 'select * from produktai');
+    $result = mysqli_query($database, 'select * from produktai join sandelio_produktai on produktai.id = sandelio_produktai.produkto_id');
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
     foreach ($products as $product) { ?>
         <tr>
@@ -52,14 +52,6 @@ if (isset($_POST['name'])) {
 <h3>Produkto pridėjimo forma</h3>
 <form action="#" method="post">
     <table border=1px>
-        <!--        <tr>-->
-        <!--            <td>-->
-        <!--                Prekės ID:-->
-        <!--            </td>-->
-        <!--            <td>-->
-        <!--                <input type="number" name="id" value="">-->
-        <!--            </td>-->
-        <!--        </tr>-->
         <tr>
             <td>
                 Kategorija:
@@ -92,7 +84,6 @@ if (isset($_POST['name'])) {
                 <input type="number" name="useBy_date" value=""><br/>
             </td>
         </tr>
-        <!--        <br/>-->
     </table>
     <br/>
     <button type="submit">Pridėti</button>
