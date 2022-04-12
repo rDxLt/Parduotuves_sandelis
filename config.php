@@ -37,4 +37,9 @@ function isLoged(): bool
     }
 }
 
+//function deleteRecord(mysqli $dbname, $id)
+//{
+//    $sql = "delete from `person` where id =  '" . $id . "'";
+//}
+
 ?>
