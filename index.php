@@ -57,6 +57,9 @@ include_once 'config.php';
                     <td>
                         <a href="index.php?page=warehouse">Sandėlys</a>
                     </td>
+                    <td>
+                        <a href="index.php?page=shops">Parduotuvės</a>
+                    </td>
                 <?php } elseif ($get_role === 'sandelio_darbuotojas') { ?>
                     <td>
                         <a href="index.php?page=products">Produktai</a>
@@ -79,7 +82,7 @@ include_once 'config.php';
 
 <?php
 
-/** @var TYPE_NAME $page */
+
 if ($page === null) {
     include 'pages/home.php';
 } elseif ($page === 'register') {
